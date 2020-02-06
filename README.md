@@ -7,6 +7,6 @@
 
 # Use case diagram link -->  https://www.lucidchart.com/users/registerOrLogin/free?showLogin=false&pseudoEditorTitle=CS+3354+CalTool+Use+Case+Diagram&instructionParameter=i18nKey%23%3D%3Achart-web-controllers-invitations-document%23%40%3APN%23%3D%3Aname%23%40%3APV%23%3D%3ACS+3354+CalTool+Use+Case+Diagram
 
-# Sequence diagram link --> 
+# Sequence diagram link --> ...
 
-# Class diagram link --> 
+# Class diagram link --> ...
