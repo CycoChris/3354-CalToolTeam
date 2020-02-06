@@ -1,7 +1,7 @@
 # 3354-CalToolTeam
 
-# CalTool v0.0 link --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
-# (code is just from a youtube video. Feel free to edit this code or you can make another one.)
+# "CalTool v0.0" code link --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
+# (This code is just from a youtube video. Feel free to edit this code or you can make another one.)
 
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
