@@ -17,7 +17,7 @@
 5. [Add Event] --> (someone)
 6. [Add Weekly Events] --> (someone)
 7. [Edit & Delete Events] --> (someone)
-8. [Event Alert] (someone)
+8. [Event Alert] --> (someone)
 9. [Check Time Conflicts] --> (someone)
 10. [Color Mark Events] --> (someone)
 11. [Special Colors for Holidays] --> (someone)
