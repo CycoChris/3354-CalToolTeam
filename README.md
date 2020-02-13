@@ -20,7 +20,7 @@
 8. [Event Alert] --> (someone)
 9. [Check Time Conflicts] --> (Albert Jean)
 10. [Add/delete event categories] --> (Albert Jean)
-11. [Color Mark Events] --> (Albert Jean)
+11. [Color Mark Events] --> (someone)
 12. [Special Colors for Holidays] --> (someone)
 13. [Zoom and Scroll Support] --> (someone)
 
