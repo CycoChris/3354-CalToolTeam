@@ -10,9 +10,9 @@
 # Use case diagram link -->  https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true
 
 # Sequence diagram link --> 
-1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754) --> (Kyle Custodio)
-2. [Weekly View](https://www.lucidchart.com/invitations/accept/d8056a74-fe0e-40a1-8841-df279992fb70) --> (Kyle Custodio)
-3. [Daily View](https://www.lucidchart.com/invitations/accept/5ad9dfbe-f5f8-4c1b-a674-487b4347b023) --> (Kyle Custodio)
+1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754)  --> (Kyle Custodio)
+2. [Weekly View](https://www.lucidchart.com/invitations/accept/d8056a74-fe0e-40a1-8841-df279992fb70)   --> (Kyle Custodio)
+3. [Daily View](https://www.lucidchart.com/invitations/accept/5ad9dfbe-f5f8-4c1b-a674-487b4347b023)  --> (Kyle Custodio)
 4. [Agenda View] --> (someone)
 5. [Add Event] --> (someone)
 6. [Add Weekly Events] --> (someone)
