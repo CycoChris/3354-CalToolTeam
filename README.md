@@ -9,6 +9,9 @@
 
 # Use case diagram link -->  https://www.lucidchart.com/documents/view/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0
 
-# Sequence diagram link --> Not made yet
+# Sequence diagram link --> 
+1. [Create Account](https://www.lucidchart.com/documents/edit/49cbeaca-cc91-4772-b154-1af7682e7b80/0_0)
+2. [Log In](https://www.lucidchart.com/documents/edit/4f95a9b4-935c-414b-822f-fcb676a4a33b/0_0)
+3. [Set a Reminder](https://www.lucidchart.com/documents/edit/84ceb259-9fc0-472a-9059-358404c6d117/0_0)
 
 # Class diagram link --> Not made yet
