@@ -7,7 +7,7 @@
 
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
-# Use case diagram link -->  https://www.lucidchart.com/documents/view/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0
+# Use case diagram link -->  https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true
 
 # Sequence diagram link --> 
 1. [Create Account](https://www.lucidchart.com/documents/edit/49cbeaca-cc91-4772-b154-1af7682e7b80/0_0)
