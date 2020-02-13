@@ -19,9 +19,9 @@
 7. [Edit & Delete Events] --> (Christopher Oliva)
 8. [Event Alert] --> (someone)
 9. [Check Time Conflicts] --> (someone)
-10. [Color Mark Events] --> (someone)
-11. [Special Colors for Holidays] --> (someone)
-12. [Zoom and Scroll Support] --> (someone)
-13. [Add/delete event categories] --> (someone)
+10. [Add/delete event categories] --> (someone)
+11. [Color Mark Events] --> (someone)
+12. [Special Colors for Holidays] --> (someone)
+13. [Zoom and Scroll Support] --> (someone)
 
 # Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
