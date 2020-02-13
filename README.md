@@ -10,8 +10,17 @@
 # Use case diagram link -->  https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true
 
 # Sequence diagram link --> 
-1. [Create Account](https://www.lucidchart.com/documents/edit/49cbeaca-cc91-4772-b154-1af7682e7b80/0_0)
-2. [Log In](https://www.lucidchart.com/documents/edit/4f95a9b4-935c-414b-822f-fcb676a4a33b/0_0)
-3. [Set a Reminder](https://www.lucidchart.com/documents/edit/84ceb259-9fc0-472a-9059-358404c6d117/0_0)
+1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754)
+2. [Weekly View](https://www.lucidchart.com/invitations/accept/d8056a74-fe0e-40a1-8841-df279992fb70)
+3. [Daily View](https://www.lucidchart.com/invitations/accept/5ad9dfbe-f5f8-4c1b-a674-487b4347b023)
+4. [Agenda View]
+5. [Add Event]
+6. [Add Weekly Events]
+7. [Edit & Delete Events]
+8. [Event Alert]
+9. [Check Time Conflicts]
+10. [Color Mark Events]
+11. [Special Colors for Holidays]
+12. [Zoom and Scroll Support]
 
 # Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
