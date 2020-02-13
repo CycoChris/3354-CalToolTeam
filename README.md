@@ -18,9 +18,9 @@
 6. [Add Weekly Events] --> (Christopher Oliva)
 7. [Edit & Delete Events] --> (Christopher Oliva)
 8. [Event Alert] --> (someone)
-9. [Check Time Conflicts] --> (someone)
-10. [Add/delete event categories] --> (someone)
-11. [Color Mark Events] --> (someone)
+9. [Check Time Conflicts] --> (Albert Jean)
+10. [Add/delete event categories] --> (Albert Jean)
+11. [Color Mark Events] --> (Albert Jean)
 12. [Special Colors for Holidays] --> (someone)
 13. [Zoom and Scroll Support] --> (someone)
 
