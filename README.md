@@ -14,4 +14,4 @@
 2. [Log In](https://www.lucidchart.com/documents/edit/4f95a9b4-935c-414b-822f-fcb676a4a33b/0_0)
 3. [Set a Reminder](https://www.lucidchart.com/documents/edit/84ceb259-9fc0-472a-9059-358404c6d117/0_0)
 
-# Class diagram link --> Not made yet
+# Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
