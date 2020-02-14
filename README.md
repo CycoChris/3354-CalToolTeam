@@ -17,10 +17,10 @@
 5. [Add Event] --> (Christopher Oliva)
 6. [Add Weekly Events] --> (Christopher Oliva)
 7. [Edit & Delete Events] --> (Christopher Oliva)
-8. [Event Alert] --> (Yousuf Jazzar)
+8. [Event Alert] --> (someone)
 9. [Check Time Conflicts] --> (Albert Jean)
 10. [Add/delete event categories] --> (Albert Jean)
-11. [Color Mark Events] --> (someone)
+11. [Color Mark Events] --> (Yousuf Jazzar)
 12. [Special Colors for Holidays] --> (someone)
 13. [Zoom and Scroll Support] --> (Yousuf Jazzar)
 
