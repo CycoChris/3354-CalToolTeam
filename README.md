@@ -17,11 +17,11 @@
 5. [Add Event] --> (Christopher Oliva)
 6. [Add Weekly Events] --> (Christopher Oliva)
 7. [Edit & Delete Events] --> (Christopher Oliva)
-8. [Event Alert] --> (someone)
+8. [Event Alert] --> (Kason Alstatt)
 9. [Check Time Conflicts] --> (Albert Jean)
 10. [Add/delete event categories] --> (Albert Jean)
 11. [Color Mark Events] --> (Yousuf Jazzar)
-12. [Special Colors for Holidays] --> (someone)
+12. [Special Colors for Holidays] --> (Kason Alstatt)
 13. [Zoom and Scroll Support] --> (Yousuf Jazzar)
 
 # Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
