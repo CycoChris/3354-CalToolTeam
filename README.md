@@ -8,6 +8,7 @@
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
 # Use case diagram link -->  https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true
+1. [Use Case Diagram] --> (Kent Templin)
 
 # Sequence diagram link --> 
 1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754)  --> (Kyle Custodio)
