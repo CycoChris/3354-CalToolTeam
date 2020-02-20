@@ -28,4 +28,4 @@
 # "CalTool" codes
 1. [CalTool v0.0] (Kent Templin) --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
 ____________________________________(This code is from a youtube video. Feel free to edit or recreate your own.)
-2. [CalTool v1.0] (someone)
+2. [CalTool v1.0] ( )
