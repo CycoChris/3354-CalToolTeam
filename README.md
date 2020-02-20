@@ -24,3 +24,4 @@
 12. [Zoom and Scroll Support] --> (Yousuf Jazzar)
 
 # Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
+1. [Class Diagram] --> (Kent Templin)
