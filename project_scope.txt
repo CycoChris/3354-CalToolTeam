@@ -4,7 +4,6 @@ A Calendar Software
     1.1.1 Monthly view: show all days in a month, and event snippet for  each day
     1.1.2 Weekly view: show all days in a week, and event snippet for  each day
     1.1.3 Daily view: show all events in a day, sorted by their starting time
-    1.1.4 Agenda view (optional): show all events in future as a list
 1.2 Events 
     1.2.1 Add an event with starting and ending time
     1.2.2 Check time conflicts when adding events
