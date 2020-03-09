@@ -17,9 +17,9 @@
 7. [Event Alert] --> (Kason Alstatt)
 8. [Check Time Conflicts](https://www.lucidchart.com/invitations/accept/dbf22d5a-8ccc-4d1f-9215-3d37b73351cf) --> (Albert Jean)
 9. [Add/Delete Event Categories](https://www.lucidchart.com/invitations/accept/6f568a2f-e0af-4879-a3f7-68b8203b8aa4) --> (Albert Jean)
-10. [Color Mark Events](https://www.lucidchart.com/invitations/accept/22eeac8b-8cfb-4931-b0b2-1acba21eccaf) --> (Yousuf Jazzar)
+10. [Color Mark Events]() --> (Yousuf Jazzar)
 11. [Special Colors for Holidays] --> (Kason Alstatt)
-12. [Zoom and Scroll Support] --> (Yousuf Jazzar)
+12. [Zoom and Scroll Support](https://www.lucidchart.com/invitations/accept/22eeac8b-8cfb-4931-b0b2-1acba21eccaf) --> (Yousuf Jazzar)
 
 # Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
 1. [Class Diagram] --> (Kent Templin)
