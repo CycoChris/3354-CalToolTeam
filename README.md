@@ -4,8 +4,8 @@
 
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
-# Use case diagram link -->  https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true
-1. [Use Case Diagram] --> (Kent Templin)
+# Use case diagram link -->
+1. [Use Case Diagram](https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true) --> (Kent Templin)
 
 # Sequence diagram link --> 
 1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754)  --> (Kyle Custodio)
@@ -14,15 +14,15 @@
 4. [Add Event](https://www.lucidchart.com/invitations/accept/e399f794-9d72-4be2-95e7-86b64e49d751) --> (Christopher Oliva)
 5. [Add Weekly Events](https://www.lucidchart.com/invitations/accept/57034ed8-25aa-47b6-b0a6-f2a3386642ca) --> (Christopher Oliva)
 6. [Edit & Delete Events](https://www.lucidchart.com/invitations/accept/f2fdbe10-9234-4964-ba8a-6844281b3aaf) --> (Christopher Oliva)
-7. [Event Alert] --> (Kason Alstatt)
+7. [Event Alert](https://www.lucidchart.com/documents/edit/99d053ce-74b5-4fdd-bf76-def6f107e533/0_0?shared=true) --> (Kason Alstatt)
 8. [Check Time Conflicts](https://www.lucidchart.com/invitations/accept/dbf22d5a-8ccc-4d1f-9215-3d37b73351cf) --> (Albert Jean)
 9. [Add/Delete Event Categories](https://www.lucidchart.com/invitations/accept/6f568a2f-e0af-4879-a3f7-68b8203b8aa4) --> (Albert Jean)
 10. [Color Mark Events](https://www.lucidchart.com/invitations/accept/9f9d4bb4-c3c3-42d9-ab9e-fc0ae1b32531) --> (Yousuf Jazzar)
-11. [Special Colors for Holidays] --> (Kason Alstatt)
+11. [Special Colors for Holidays](https://www.lucidchart.com/documents/edit/28b89a9c-2169-4a06-a0f2-518e5c9d1acf/0_0?shared=true) --> (Kason Alstatt)
 12. [Zoom and Scroll Support](https://www.lucidchart.com/invitations/accept/22eeac8b-8cfb-4931-b0b2-1acba21eccaf) --> (Yousuf Jazzar)
 
-# Class diagram link --> https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6
-1. [Class Diagram] --> (Kent Templin)
+# Class diagram link -->
+1. [Class Diagram](https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6) --> (Kent Templin)
 
 
 # "CalTool" codes
