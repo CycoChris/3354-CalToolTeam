@@ -4,8 +4,6 @@
 
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
-# Deliverable 2 Report link --> https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
-
 # Use case diagram link -->
 1. [Use Case Diagram](https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true) --> (Kent Templin)
 
@@ -26,6 +24,14 @@
 # Class diagram link -->
 1. [Class Diagram](https://www.lucidchart.com/invitations/accept/2ab50caa-915c-430c-a6f9-d2b6c5567ad6) --> (Kent Templin)
 
+
+//===================================================
+//===================================================
+
+
+# Deliverable 2 Report link --> https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
+
+# Recorded Final Project Presentation Script --> https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
 
 # "CalTool" codes
 1. [CalTool v0.0] (Kent Templin) --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
