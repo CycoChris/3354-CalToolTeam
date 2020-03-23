@@ -31,7 +31,7 @@
 
 # Deliverable 2 Report link --> https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
 
-# Presentation Slides link --> https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhOSQE/edit?usp=sharing
+# Presentation Slide link --> https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhOSQE/edit?usp=sharing
 
 # Recorded Final Project Presentation Script --> https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
 
