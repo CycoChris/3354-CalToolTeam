@@ -4,6 +4,8 @@
 
 # Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
+# Deliverable 2 Report link --> https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
+
 # Use case diagram link -->
 1. [Use Case Diagram](https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true) --> (Kent Templin)
 
