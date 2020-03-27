@@ -2,11 +2,10 @@ package com.CalTool.GUI;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Box;
+import javax.swing.AbstractCellEditor;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -14,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 public class Monthly extends JPanel{
@@ -39,6 +39,7 @@ public class Monthly extends JPanel{
  		
  		jtable = new JTable(new CellTableModel(data, days));
  		jtable.setDefaultRenderer(CellInformation.class, new CellRenderer());
+ 		jtable.setDefaultEditor(CellInformation.class, new CellEditor());
  		jtable.setRowHeight(100);
  		
  		
@@ -129,47 +130,102 @@ class CellTableModel extends AbstractTableModel {
 
 class CellRenderer implements TableCellRenderer {
 
+	CellComponent cellComp;
+	
+	public CellRenderer() {
+		cellComp = new CellComponent();
+	}
+	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
 			int row, int column) {
 		
 		CellInformation data = (CellInformation)value;
 		
+		cellComp.updateData(data, isSelected, table);
 			 
-	    JPanel panel = new JPanel();
-	    BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
-	    JCheckBox box = new JCheckBox();
 	    
-	    panel.setLayout(layout);
-	    
-	    	
-	    
-	    if (data != null) {
-	    	panel.add(new JLabel("" + data.day));
-	    	
-	    	JLabel[] label = new JLabel[data.events.length];
-	    	
-	  	    for (int i = 0; i < data.events.length; i ++) {
-	  	    	label[i] = new JLabel(data.events[i]);
-	  	    	panel.add(label[i]);
-	  	    }
-	    	
-	    }
-	    	
-	    	   
-	    
-	    
-	    
-	  
-	    
-	    
-	    if (isSelected) {
-	      panel.setBackground(table.getSelectionBackground());
-	    }else{
-	      panel.setBackground(table.getBackground());
-	    }
-		
-		return panel;
+		return cellComp;
 	}
 	
 }
+
+
+class CellComponent extends JPanel {
+	CellInformation cell;
+	
+	JCheckBox[] completed;
+	JLabel[] label;
+
+  	public CellComponent() {
+  		super();
+  		
+	    BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+	    setLayout(layout);
+	    
+	    label = new JLabel[2];
+    	completed = new JCheckBox[2];
+    	
+  	    for (int i = 0; i < 2; i ++) {
+  	    	completed[i] = new JCheckBox();
+  	    	label[i] = new JLabel();
+  	    	
+  	    	add(completed[i]);
+  	    	add(label[i]);
+  	    }
+  }
+
+	public void updateData(CellInformation cell, boolean isSelected, JTable table) {
+		this.cell = cell;
+		
+		
+		if (cell != null) {	
+			for (int i = 0; i < cell.events.length; i ++) {	
+				label[i].setText(cell.events[i]);
+				completed[i].setVisible(true);
+			} 	
+			
+		} else {
+			for (int i = 0; i < 2; i ++) {  	  
+				label[i].setText(" ");
+				completed[i].setVisible(false);
+			}
+			
+		}
+		
+		
+		if (isSelected) {
+			setBackground(table.getSelectionBackground());
+		} else {
+			setBackground(table.getBackground());
+		}
+		
+	}
+
+}
+
+
+class CellEditor extends AbstractCellEditor implements TableCellEditor {
+
+	CellComponent cellComp;
+	
+	public CellEditor() {
+		cellComp = new CellComponent();
+	}
+	
+	@Override
+	public Object getCellEditorValue() {
+		return null;
+	}
+
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+		CellInformation cell = (CellInformation)value;
+		cellComp.updateData(cell, true, table);
+		return cellComp;
+	}
+	
+}
+
+
+
