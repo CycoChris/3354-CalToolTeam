@@ -1,10 +1,9 @@
 package com.CalTool.GUI;
 
+import java.awt.FlowLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 public class Window {
 
@@ -41,7 +40,8 @@ public class Window {
 		frame.setSize(600, 500);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);			
+		frame.setLayout(new FlowLayout());
+		
 	}
 	
 	
@@ -49,25 +49,29 @@ public class Window {
 	public void updateViewMode() {
 //		frame.removeAll();
 		
-		switch(CurrView) {
-			case MONTHLY_VIEW:
-				frame.add(monthlyView.getPanel());
-				break;
-				
-			case DAILY_VIEW:
-//				frame.add(pDaily);
-				break;
-				
-			case WEEKLY_VIEW:
-//				frame.add(pWeekly);
-				break;
-				
-			case AGENDA_VIEW:
-//				frame.add(pAgenda);
-				break;
-				
-			default:
-				System.out.println("[UPDATE ERROR] View mode needs to be updated");
-		}
+//		switch(CurrView) {
+//			case MONTHLY_VIEW:
+//				System.out.println("Adding panel");
+//				frame.add(monthlyView.getPanel());
+//				break;
+//				
+//			case DAILY_VIEW:
+////				frame.add(pDaily);
+//				break;
+//				
+//			case WEEKLY_VIEW:
+////				frame.add(pWeekly);
+//				break;
+//				
+//			case AGENDA_VIEW:
+////				frame.add(pAgenda);
+//				break;
+//				
+//			default:
+//				System.out.println("[UPDATE ERROR] View mode needs to be updated");
+//		}
+
+		frame.add(monthlyView.getPanel());
+		frame.setVisible(true);
 	}
 }

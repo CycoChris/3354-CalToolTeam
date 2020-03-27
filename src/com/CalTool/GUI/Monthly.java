@@ -1,74 +1,45 @@
 package com.CalTool.GUI;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
-public class Monthly {
+public class Monthly extends JPanel {
 	
 	
 	//headers for the table
-    JPanel p;
+    private JTable jtable;
+    
     
     // Object used to Fill table
-    Object[][] eventsdataStructs;
+    private Object[][] eventsdataStructs;
+    private String[] days;
 	
 	public Monthly() {
 		// Instantiate the super class (for the JPanel)
- 		p = new JPanel();
+ 		super();
  		
- 		populateCellData();
-// 		
-// 		// Create the table
-// 		jtable = new JTable(eventsdataStructs, Days);
-// 		
-//// 		add(new JButton("THis should work?"));
-// 		add(new JScrollPane(jtable));
+ 		populateData();
  		
+ 		jtable = new JTable(eventsdataStructs, days);
+ 		add(new JScrollPane(jtable));
  		
- 		//headers for the table
-        String[] columns = new String[] {
-            "Id", "Name", "Hourly Rate", "Part Time"
-        };
-         
-        //actual data for the table in a 2d array
-        Object[][] data = new Object[][] {
-            {1, "John", 40.0, false },
-            {2, "Rambo", 70.0, false },
-            {3, "Zorro", 60.0, true },
-        };
-        
-        
-        String[] Days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
-        
-        
-        Object[][] eventsdataStructs = new Object[][]{
+
+	}
+	
+	// This can be the function that calls a JSON parser to get all of the information
+	public void populateData() {
+	   eventsdataStructs = new Object[][]{
 			{1, 2, 3, 4, 5, 6, 7},	
 			{1, 2, 3, 4, 5, 6, 7},	
 			{1, 2, 3, 4, 5, 6, 7},
         };
         
-        //create table with data
-        JTable jtable = new JTable(data, columns);
-         
-        //add the table to the frame
-        p.add(new JScrollPane(jtable));
-         
- 		
-	}
-	
-	public void populateCellData() {
-		eventsdataStructs = new Object[][]{
-				{1, 2, 3, 4, 5, 6, 7},	
-				{1, 2, 3, 4, 5, 6, 7},	
-				{1, 2, 3, 4, 5, 6, 7},
-		};
+        days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
 	}
 	
 	public JPanel getPanel() {
-		return p;
+		return this;
 	}
 	
 }
@@ -76,7 +47,7 @@ public class Monthly {
 // A class used as a data structure for the information shown in each cell
 class CellInformation {
 	int day;
-	String[] events;
+	String[] events;	// This can be changed to an object later on
 	
 	public CellInformation(int day, String[] events) {
 		this.day = day;
