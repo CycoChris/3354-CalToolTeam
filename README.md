@@ -1,15 +1,15 @@
 # 3354-CalToolTeam
 
-# Project proposal link:
+# Project Proposal Link:
 https://docs.google.com/document/d/1M9ePFhzEk45f1wc_5e6dDO5g0qYC-ohUVpUGqqg7QjU/edit?usp=sharing
 
-# Deliverable 1 Report link:
+# Deliverable 1 Report Link:
 https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
-# Use case diagram link -->
+# Use Case Diagram Link -->
 1. [Use Case Diagram](https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true) --> (Kent Templin)
 
-# Sequence diagram link --> 
+# Sequence Diagram Link --> 
 1. [Monthly View](https://www.lucidchart.com/invitations/accept/078816a7-9eb0-4271-b05a-282f9279e754)  --> (Kyle Custodio)
 2. [Weekly View](https://www.lucidchart.com/invitations/accept/d8056a74-fe0e-40a1-8841-df279992fb70)   --> (Kyle Custodio)
 3. [Daily View](https://www.lucidchart.com/invitations/accept/5ad9dfbe-f5f8-4c1b-a674-487b4347b023)  --> (Kyle Custodio)
@@ -31,13 +31,16 @@ https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/
 //===================================================
 
 
-# Deliverable 2 Report link --> https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
+# Deliverable 2 Report Link:
+https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/edit?usp=sharing
 
-# Presentation Slide link --> https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhOSQE/edit?usp=sharing
+# Presentation Slide Link:
+https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhOSQE/edit?usp=sharing
 
-# Recorded Final Project Presentation Script --> https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
+# Recorded Final Project Presentation Script:
+https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
 
-# "CalTool" codes
-1. [CalTool v0.0] (Kent Templin) --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
-____________________________________(This code is from a youtube video. Feel free to edit or recreate your own.)
-2. [CalTool v1.0] ( )
+##### "CalTool" codes
+#####1. [CalTool v0.0] (Kent Templin) --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
+#####____________________________________(This code is from a youtube video. Feel free to edit or recreate your own.)
+#####2. [CalTool v1.0] ( )
