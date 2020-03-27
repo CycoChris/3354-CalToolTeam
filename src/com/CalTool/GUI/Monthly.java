@@ -1,23 +1,20 @@
 package com.CalTool.GUI;
 
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
-public class Monthly extends JPanel {
+public class Monthly {
 	
 	
 	//headers for the table
@@ -31,41 +28,47 @@ public class Monthly extends JPanel {
 	
 	public Monthly() {
 		// Instantiate the super class (for the JPanel)
- 		super();
+ 		
  		
  		populateData();
  		
  		jtable = new JTable(new CellTableModel(data, days));
  		jtable.setDefaultRenderer(CellInformation.class, new CellRenderer());
- 		jtable.setRowHeight(60);
- 		add(new JScrollPane(jtable));
+ 		jtable.setRowHeight(100);
+ 		
+ 		
  		
 
 	}
 	
 	// This can be the function that calls a JSON parser to get all of the information
 	public void populateData() {
-		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
+		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", "2"};
 		data = new ArrayList<CellInformation>();
 		
 		data.add(new CellInformation(1, new String[] {"Event 1", "Event 2"}));
 		data.add(new CellInformation(2, new String[] {"Event 3", "Event 4"}));
 		data.add(new CellInformation(3, new String[] {"Event 5", "Event 6"}));
 		data.add(new CellInformation(4, new String[] {"Event 7", "Event 8"}));
+        data.add(null);
+        data.add(null);
+        data.add(null);
+        data.add(null);
+        
         
 		
 		cellData = new Object[][] {
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
-			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null},
-			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null},
+			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null,  null},
+			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null,  null},
+			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null,  null},
+			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null,  null},
 		};
 		
 		
 	}
 	
-	public JPanel getPanel() {
-		return this;
+	public Container getPanel() {
+		return new JScrollPane(jtable);
 	}
 	
 }
@@ -105,7 +108,7 @@ class CellTableModel extends AbstractTableModel {
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		return (data == null) ? null : data.get(rowIndex);
+		return (data == null) ? null : data.get(columnIndex);
 	}
 	
 	public Class getColumnClass(int columnIndex) { 
@@ -113,7 +116,7 @@ class CellTableModel extends AbstractTableModel {
 	}
 	
 	public boolean isCellEditable(int columnIndex, int rowIndex) { 
-		return false;
+		return true;
 	}
 	
 }
@@ -130,16 +133,23 @@ class CellRenderer implements TableCellRenderer {
 	    JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	    JCheckBox box = new JCheckBox();
 	    
+
+
 	    panel.add(box);
 	    
-	    JLabel[] label = new JLabel[data.events.length + 1];
-	    label[0] = new JLabel("" + data.day);
-	    panel.add(label[0]);
-	    for (int i = 0; i < data.events.length; i ++) {
-	    	label[i+1] = new JLabel(data.events[i]);
-	    	panel.add(label[i+1]);
-	    }
+	    if (data != null)
+	    	panel.add(new JLabel("" + data.day));
 	    
+	    
+	    
+//	    JLabel[] label = new JLabel[data.events.length + 1];
+//	    label[0] = new JLabel("" + data.day);
+//	    panel.add(label[0]);
+//	    for (int i = 0; i < data.events.length; i ++) {
+//	    	label[i+1] = new JLabel(data.events[i]);
+//	    	panel.add(label[i+1]);
+//	    }
+//	    
 	    
 	    
 	    if (isSelected) {
@@ -148,7 +158,7 @@ class CellRenderer implements TableCellRenderer {
 	      panel.setBackground(table.getBackground());
 	    }
 		
-		return null;
+		return panel;
 	}
 	
 }

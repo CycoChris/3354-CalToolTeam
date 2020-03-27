@@ -1,8 +1,7 @@
 package com.CalTool.GUI;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class Window {
@@ -37,10 +36,12 @@ public class Window {
 		
 		// Creating the initial window
 		frame.setTitle("CalTool");
-		frame.setSize(600, 500);
+		frame.setSize(800, 700);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new FlowLayout());
+		
+		frame.setLayout(new BorderLayout());
+
 		
 	}
 	
@@ -71,7 +72,12 @@ public class Window {
 //				System.out.println("[UPDATE ERROR] View mode needs to be updated");
 //		}
 
-		frame.add(monthlyView.getPanel());
+		frame.add(monthlyView.getPanel(), BorderLayout.CENTER);
 		frame.setVisible(true);
+		
 	}
 }
+
+
+
+
