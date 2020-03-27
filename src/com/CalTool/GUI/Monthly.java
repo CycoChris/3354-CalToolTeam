@@ -3,6 +3,7 @@ package com.CalTool.GUI;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.AbstractCellEditor;
@@ -37,9 +38,11 @@ public class Monthly extends JPanel{
  		
  		populateData();
  		
+ 		Cell cell = new Cell();
+ 		
  		jtable = new JTable(new CellTableModel(data, days));
- 		jtable.setDefaultRenderer(CellInformation.class, new CellRenderer());
- 		jtable.setDefaultEditor(CellInformation.class, new CellEditor());
+ 		jtable.setDefaultRenderer(CellInformation.class, cell);
+ 		jtable.setDefaultEditor(CellInformation.class, cell);
  		jtable.setRowHeight(100);
  		
  		
@@ -59,16 +62,13 @@ public class Monthly extends JPanel{
         data.add(null);
         data.add(null);
         data.add(null);
-        
-        
+
 		cellData = new Object[][] {
 			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
 			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
 			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null},
 			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null},
 		};
-		
-		
 	}
 	
 	public Container getPanel() {
@@ -128,104 +128,87 @@ class CellTableModel extends AbstractTableModel {
 	}
 }
 
-class CellRenderer implements TableCellRenderer {
-
-	CellComponent cellComp;
+class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
+	JPanel panel;
+	JLabel label;
+	JCheckBox completed;
 	
-	public CellRenderer() {
-		cellComp = new CellComponent();
+	CellInformation cellInfo;
+	
+	public Cell() {
+		label = new JLabel();
+		completed = new JCheckBox();
+		
+		panel = new JPanel();
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		panel.add(completed);
+		panel.add(label);
 	}
 	
-	@Override
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus,
-			int row, int column) {
+	private void updateData(CellInformation cellInfo, boolean isSelected, JTable table) {
+		this.cellInfo = cellInfo;
 		
-		CellInformation data = (CellInformation)value;
-		
-		cellComp.updateData(data, isSelected, table);
-			 
-	    
-		return cellComp;
-	}
-	
-}
-
-
-class CellComponent extends JPanel {
-	CellInformation cell;
-	
-	JCheckBox[] completed;
-	JLabel[] label;
-
-  	public CellComponent() {
-  		super();
-  		
-	    BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-	    setLayout(layout);
-	    
-	    label = new JLabel[2];
-    	completed = new JCheckBox[2];
-    	
-  	    for (int i = 0; i < 2; i ++) {
-  	    	completed[i] = new JCheckBox();
-  	    	label[i] = new JLabel();
-  	    	
-  	    	add(completed[i]);
-  	    	add(label[i]);
-  	    }
-  }
-
-	public void updateData(CellInformation cell, boolean isSelected, JTable table) {
-		this.cell = cell;
-		
-		
-		if (cell != null) {	
-			for (int i = 0; i < cell.events.length; i ++) {	
-				label[i].setText(cell.events[i]);
-				completed[i].setVisible(true);
-			} 	
-			
-		} else {
-			for (int i = 0; i < 2; i ++) {  	  
-				label[i].setText(" ");
-				completed[i].setVisible(false);
-			}
-			
+		// If the cell is defined
+		if (cellInfo != null) {
+			label.setText(Arrays.toString(cellInfo.events));
+			completed.setVisible(true);
+		}
+		// If the cell is not defined (null)
+		else {
+			label.setText("");
+			completed.setVisible(false);
 		}
 		
-		
-		if (isSelected) {
-			setBackground(table.getSelectionBackground());
-		} else {
-			setBackground(table.getBackground());
-		}
-		
-	}
-
-}
-
-
-class CellEditor extends AbstractCellEditor implements TableCellEditor {
-
-	CellComponent cellComp;
-	
-	public CellEditor() {
-		cellComp = new CellComponent();
+		if (isSelected)
+			panel.setBackground(table.getSelectionBackground());
+		else 
+			panel.setBackground(table.getBackground());
 	}
 	
-	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+		CellInformation cellInfo = (CellInformation)value;
+		updateData(cellInfo, true, table);
+		return panel;
+	}
+	
 	public Object getCellEditorValue() {
 		return null;
 	}
-
-	@Override
-	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-		CellInformation cell = (CellInformation)value;
-		cellComp.updateData(cell, true, table);
-		return cellComp;
-	}
 	
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+		CellInformation cellInfo = (CellInformation)value;
+		updateData(cellInfo, isSelected, table);
+		return panel;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
