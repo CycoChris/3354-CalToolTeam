@@ -10,8 +10,6 @@ public class Window {
 
 	// Declare all containers
 	JFrame frame;
-	JPanel pMonthly, pWeekly, pDaily, pAgenda;
-	JTable table;
 	
 	// Create all objects
 	Monthly monthlyView;
@@ -25,7 +23,7 @@ public class Window {
 		createJFrame();
 			
 		// Create the different panels 
-		
+		monthlyView = new Monthly();
 		
 		// instantiate the current view TODO: this value can be read in the JSON data file
 		CurrView = View.MONTHLY_VIEW;
@@ -53,19 +51,19 @@ public class Window {
 		
 		switch(CurrView) {
 			case MONTHLY_VIEW:
-				frame.add(Monthly.getPanel());
+				frame.add(monthlyView.getPanel());
 				break;
 				
 			case DAILY_VIEW:
-				frame.add(pDaily);
+//				frame.add(pDaily);
 				break;
 				
 			case WEEKLY_VIEW:
-				frame.add(pWeekly);
+//				frame.add(pWeekly);
 				break;
 				
 			case AGENDA_VIEW:
-				frame.add(pAgenda);
+//				frame.add(pAgenda);
 				break;
 				
 			default:

@@ -1,5 +1,6 @@
 package com.CalTool.GUI;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -7,22 +8,31 @@ import javax.swing.table.DefaultTableModel;
 
 public class Monthly {
 	
-	// Create all GUI containers
-	private JPanel panel;
-	private DefaultTableModel table;
-	private JTable jtable;
 	
 	//headers for the table
-    private String[] Days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
+    JPanel p;
     
     // Object used to Fill table
+    Object[][] eventsdataStructs;
 	
 	public Monthly() {
-		// Instantiate all necessary objects
- 		panel = new JPanel();
- 		table = new DefaultTableModel();
- 		jtable = new JTable(table);
-		
+		// Instantiate the super class (for the JPanel)
+ 		p = new JPanel();
+ 		
+ 		populateCellData();
+// 		
+// 		// Create the table
+// 		jtable = new JTable(eventsdataStructs, Days);
+// 		
+//// 		add(new JButton("THis should work?"));
+// 		add(new JScrollPane(jtable));
+ 		
+ 		
+ 		//headers for the table
+        String[] columns = new String[] {
+            "Id", "Name", "Hourly Rate", "Part Time"
+        };
+         
         //actual data for the table in a 2d array
         Object[][] data = new Object[][] {
             {1, "John", 40.0, false },
@@ -30,25 +40,35 @@ public class Monthly {
             {3, "Zorro", 60.0, true },
         };
         
- 		// Add table headers
- 		for (int i = 0; i < columns.length; i ++) {
- 			mdl.addColumn(columns[i]);
- 		}
- 		
- 		for (int i = 0; i < data.length; i ++) {
- 			mdl.addRow(data[i]);
- 		}
- 		
- 		
+        
+        String[] Days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
+        
+        
+        Object[][] eventsdataStructs = new Object[][]{
+			{1, 2, 3, 4, 5, 6, 7},	
+			{1, 2, 3, 4, 5, 6, 7},	
+			{1, 2, 3, 4, 5, 6, 7},
+        };
+        
+        //create table with data
+        JTable jtable = new JTable(data, columns);
+         
         //add the table to the frame
-        pMonthly.add(new JScrollPane(table));
-           
-//		        frame.pack();
-        pMonthly.setVisible(true);
+        p.add(new JScrollPane(jtable));
+         
+ 		
+	}
+	
+	public void populateCellData() {
+		eventsdataStructs = new Object[][]{
+				{1, 2, 3, 4, 5, 6, 7},	
+				{1, 2, 3, 4, 5, 6, 7},	
+				{1, 2, 3, 4, 5, 6, 7},
+		};
 	}
 	
 	public JPanel getPanel() {
-		return panel;
+		return p;
 	}
 	
 }
