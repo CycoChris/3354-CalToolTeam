@@ -8,13 +8,14 @@ import javax.swing.table.DefaultTableModel;
 public class Monthly {
 	
 	// Create all GUI containers
-	JPanel panel;
-	DefaultTableModel table;
-	JTabel jtabel;
+	private JPanel panel;
+	private DefaultTableModel table;
+	private JTable jtable;
 	
 	//headers for the table
-    String[] Days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
-     
+    private String[] Days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
+    
+    // Object used to Fill table
 	
 	public Monthly() {
 		// Instantiate all necessary objects
@@ -29,12 +30,7 @@ public class Monthly {
             {3, "Zorro", 60.0, true },
         };
         
-       
- 		
- 		
-        
-        
- 		// Add data
+ 		// Add table headers
  		for (int i = 0; i < columns.length; i ++) {
  			mdl.addColumn(columns[i]);
  		}
@@ -56,3 +52,17 @@ public class Monthly {
 	}
 	
 }
+
+// A class used as a data structure for the information shown in each cell
+class CellInformation {
+	int day;
+	String[] events;
+	
+	public CellInformation(int day, String[] events) {
+		this.day = day;
+		this.events = events;
+	}
+}
+
+// A class for making the table look exactly how we need it
+
