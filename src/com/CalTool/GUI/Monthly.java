@@ -2,10 +2,12 @@ package com.CalTool.GUI;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
-public class Monthly {
+public class Monthly extends JPanel{
 	
 	
 	//headers for the table
@@ -28,7 +30,10 @@ public class Monthly {
 	
 	public Monthly() {
 		// Instantiate the super class (for the JPanel)
- 		
+ 		super();
+
+		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+		setLayout(boxlayout);
  		
  		populateData();
  		
@@ -37,13 +42,13 @@ public class Monthly {
  		jtable.setRowHeight(100);
  		
  		
- 		
-
+ 		// Add it to the current panel
+ 		add(new JScrollPane(jtable));
 	}
 	
 	// This can be the function that calls a JSON parser to get all of the information
 	public void populateData() {
-		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun", "2"};
+		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
 		data = new ArrayList<CellInformation>();
 		
 		data.add(new CellInformation(1, new String[] {"Event 1", "Event 2"}));
@@ -53,22 +58,20 @@ public class Monthly {
         data.add(null);
         data.add(null);
         data.add(null);
-        data.add(null);
         
         
-		
 		cellData = new Object[][] {
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null,  null},
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null,  null},
-			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null,  null},
-			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null,  null},
+			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
+			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
+			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null},
+			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null},
 		};
 		
 		
 	}
 	
 	public Container getPanel() {
-		return new JScrollPane(jtable);
+		return this;
 	}
 	
 }
@@ -119,6 +122,9 @@ class CellTableModel extends AbstractTableModel {
 		return true;
 	}
 	
+	public String getColumnName (int columnIndex) {
+		return columnHeaders[columnIndex];
+	}
 }
 
 class CellRenderer implements TableCellRenderer {
@@ -130,26 +136,31 @@ class CellRenderer implements TableCellRenderer {
 		CellInformation data = (CellInformation)value;
 		
 			 
-	    JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	    JPanel panel = new JPanel();
+	    BoxLayout layout = new BoxLayout(panel, BoxLayout.Y_AXIS);
 	    JCheckBox box = new JCheckBox();
 	    
-
-
-	    panel.add(box);
+	    panel.setLayout(layout);
 	    
-	    if (data != null)
+	    	
+	    
+	    if (data != null) {
 	    	panel.add(new JLabel("" + data.day));
+	    	
+	    	JLabel[] label = new JLabel[data.events.length];
+	    	
+	  	    for (int i = 0; i < data.events.length; i ++) {
+	  	    	label[i] = new JLabel(data.events[i]);
+	  	    	panel.add(label[i]);
+	  	    }
+	    	
+	    }
+	    	
+	    	   
 	    
 	    
 	    
-//	    JLabel[] label = new JLabel[data.events.length + 1];
-//	    label[0] = new JLabel("" + data.day);
-//	    panel.add(label[0]);
-//	    for (int i = 0; i < data.events.length; i ++) {
-//	    	label[i+1] = new JLabel(data.events[i]);
-//	    	panel.add(label[i+1]);
-//	    }
-//	    
+	  
 	    
 	    
 	    if (isSelected) {
