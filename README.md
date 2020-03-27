@@ -1,8 +1,10 @@
 # 3354-CalToolTeam
 
-# Project proposal link --> https://docs.google.com/document/d/1M9ePFhzEk45f1wc_5e6dDO5g0qYC-ohUVpUGqqg7QjU/edit?usp=sharing
+# Project proposal link:
+https://docs.google.com/document/d/1M9ePFhzEk45f1wc_5e6dDO5g0qYC-ohUVpUGqqg7QjU/edit?usp=sharing
 
-# Deliverable 1 Report link --> https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
+# Deliverable 1 Report link:
+https://docs.google.com/document/d/19xciPaCiuHVF_6Q3JULDjwb9It-N531ZTmJSuhHJuA0/edit
 
 # Use case diagram link -->
 1. [Use Case Diagram](https://www.lucidchart.com/documents/edit/51ed8670-10ad-4dca-ab4b-cf7593d3367e/0_0?shared=true) --> (Kent Templin)
