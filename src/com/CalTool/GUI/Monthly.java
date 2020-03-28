@@ -1,12 +1,17 @@
 package com.CalTool.GUI;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.swing.AbstractCellEditor;
@@ -25,11 +30,17 @@ import javax.swing.table.TableCellRenderer;
 
 public class Monthly extends JPanel{
 	
+	// Object used to get info about current month 
+	private Calendar calendar;
 	
 	//headers for the table
-    private JTable jtable;
-    private JButton prev, next;
+    private JTable jtable;    
     private CellTableModel tableModel;
+    
+    // Objects for the panel above the monthly calendar 
+    private JButton prev, next;
+    private JLabel currMonth;	// The label used to distinguish which month is being displayed
+    private SimpleDateFormat currMonthFormatter;
     
     // Object used to Fill table
     private String[] days;
@@ -39,8 +50,10 @@ public class Monthly extends JPanel{
 		// Instantiate the super class (for the JPanel)
  		super();
 
-		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-		setLayout(boxlayout);
+//		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+//		setLayout(boxlayout);
+ 		BorderLayout layout = new BorderLayout();
+ 		setLayout(layout);
  		
  		populateData();
  		
@@ -52,24 +65,9 @@ public class Monthly extends JPanel{
  		jtable.setRowHeight(200);
  		
  		
- 		// create and add buttons
- 		JPanel buttons = new JPanel();
- 		prev = new JButton("Previous");
- 		next = new JButton("Next");
- 		buttons.add(prev);
- 		buttons.add(next);
- 		
- 		next.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				data.add(new CellInformation(1000, new String[] {"SPECIAL EVENT"}));
-				tableModel.fireTableDataChanged();	// To update the table
-			}
-		});
  		
  		// Add it to the current panel
- 		add(buttons);
+ 		add(getMenuPanel(), BorderLayout.NORTH);
  		add(new JScrollPane(jtable));
 	}
 	
@@ -83,6 +81,48 @@ public class Monthly extends JPanel{
 		}
 
 		
+	}
+	
+	public JPanel getMenuPanel() {
+		// create and add buttons
+ 		JPanel menuPanel = new JPanel();
+ 		prev = new JButton();
+ 		next = new JButton();
+ 		currMonth = new JLabel();
+ 		currMonthFormatter = new SimpleDateFormat("MM/yyyy");
+ 		calendar = new GregorianCalendar();
+ 		 		
+ 		// Set all attributes of the subcomponents in the menu panel
+ 		prev.setText("<<");
+ 		next.setText(">>");
+ 		next.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				data.add(new CellInformation(1000, new String[] {"SPECIAL EVENT"}));
+				tableModel.fireTableDataChanged();	// To update the table
+				
+				// Change the date appropriately 
+				int yr = calendar.get(Calendar.YEAR);
+				calendar.set(yr-1900, calendar.get(Calendar.MONTH) + 1,10);
+//				currMonth.setText(currMonthFormatter.format(calendar.getTime()));
+				currMonth.setText(calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH));
+				System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
+				System.out.println(calendar.get(Calendar.YEAR));
+			}
+		});
+ 		
+		currMonth.setText(currMonthFormatter.format(calendar.getTime()));
+		System.out.println(calendar.get(Calendar.YEAR));
+ 		calendar.setTime(new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)));
+ 		
+ 		// Add all required elements and return
+ 		menuPanel.add(prev);
+ 		menuPanel.add(Box.createHorizontalStrut(10));
+ 		menuPanel.add(currMonth);
+ 		menuPanel.add(Box.createHorizontalStrut(10));
+ 		menuPanel.add(next);
+ 		return menuPanel;
 	}
 	
 	public Container getPanel() {
