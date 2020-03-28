@@ -1,13 +1,17 @@
 package com.CalTool.GUI;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.AbstractCellEditor;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -43,9 +47,9 @@ public class Monthly extends JPanel{
  		tableModel = new CellTableModel(data, days);
  		
  		jtable = new JTable(tableModel);
- 		jtable.setDefaultRenderer(CellInformation.class, new Cell());
- 		jtable.setDefaultEditor(CellInformation.class, new Cell());
- 		jtable.setRowHeight(100);
+ 		jtable.setDefaultRenderer(CellInformation.class, new Cell(tableModel));
+ 		jtable.setDefaultEditor(CellInformation.class, new Cell(tableModel));
+ 		jtable.setRowHeight(200);
  		
  		
  		// create and add buttons
@@ -75,7 +79,7 @@ public class Monthly extends JPanel{
 		data = new ArrayList<CellInformation>();
 		
 		for (int i = 1; i <= 31; i ++) {
-			data.add(new CellInformation(i, new String[] {"Event 1", "Event 2"}));
+			data.add(new CellInformation(i, new String[] {"Event 1", "Event 2", "3", "4", "5"}));
 		}
 
 		
@@ -148,30 +152,57 @@ class CellTableModel extends AbstractTableModel {
 }
 
 class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
+	
 	JPanel panel;
 	JLabel dayNum;
+	JPanel[] aligner;
 	JLabel[] label;
 	JCheckBox[] completed;
 	CellInformation cellInfo;
+	CellTableModel tableModel;
+	CheckBoxActionListener[] actionListeners;
 	
-	public Cell() {
+	public Cell(CellTableModel tableModel) {
+		this.tableModel = tableModel;
 		panel = new JPanel();
 		dayNum = new JLabel();
-		
 	    label = new JLabel[20];
 	    completed = new JCheckBox[20];
+		aligner = new JPanel[20];
+		actionListeners = new CheckBoxActionListener[20];
 	    
-	    panel.add(dayNum);
+	    // Change the Layout Manager of the JPanel
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	    
+	    // Style the day number of each cell
+	    JPanel temp = new JPanel();
+	    temp.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    temp.add(dayNum);	
+	    dayNum.setBorder(BorderFactory.createLineBorder(Color.blue));
+	    dayNum.setOpaque(true);
+	    dayNum.setBackground(Color.lightGray);
+	    
+	 // Start adding in all of the elements
+	    panel.add(temp);
 	    for (int i = 0; i < label.length; i ++) {
+	    	// Create all objects
 	    	label[i] = new JLabel();
 	    	completed[i] = new JCheckBox();
+	    	aligner[i] = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	    	actionListeners[i] = new CheckBoxActionListener(tableModel, i);
 	    	
-	    	panel.add(label[i]);
-	    	panel.add(completed[i]);
+	    	// Add the action listener to each check box
+	    	completed[i].addActionListener(actionListeners[i]);
+	    	
+	    	// Align the current check box and event name
+	    	aligner[i].add(completed[i]);
+	    	aligner[i].add(label[i]);
+	    	
+	    	// Add the aligned elements to the cell's main JPanel and decrease the space between the next set of aligned elements
+	    	panel.add(aligner[i]);
+		    panel.add(Box.createVerticalStrut(-9));
 	    }
-	    
-	    
+	    panel.add(Box.createVerticalGlue());
 	}
 	
 	private void updateData(CellInformation cellInfo, boolean isSelected, JTable table) {
@@ -182,13 +213,16 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 		// If the cell is defined
 		if (cellInfo != null) {
 			
-			dayNum.setText("" + cellInfo.day);
+			dayNum.setText(" " + cellInfo.day + " ");
 			dayNum.setVisible(true);
 			
 			for (int i = 0; i < cellInfo.events.length; i ++) {
+				// Set the current information
 				label[i].setText(cellInfo.events[i]);
 				completed[i].setSelected(cellInfo.completed[i]);
-				completed[i].addActionListener(new CheckBoxActionListener(cellInfo, i));
+				
+				// Change the action listener's cellInfo object reference to the correct one
+				actionListeners[i].setCellInfo(cellInfo);
 				
 				//SET TO VISIBLE
 				label[i].setVisible(true);
@@ -242,22 +276,29 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 }
 
 class CheckBoxActionListener implements ActionListener {
-
+	
+	CellTableModel tableModel;
 	CellInformation cellInfo;
 	int eventIndex;
 	
-	public CheckBoxActionListener(CellInformation cellInfo, int eventIndex) {
-		this.cellInfo = cellInfo;
+	public CheckBoxActionListener(CellTableModel tableModel, int eventIndex) {
+		this.tableModel = tableModel;
 		this.eventIndex = eventIndex;
+	}
+	
+	public void setCellInfo(CellInformation cellInfo) {
+		this.cellInfo = cellInfo;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("Action Preformed on day: " + cellInfo.day);
 		if (((JCheckBox)e.getSource()).isSelected()) {
 			cellInfo.completed[eventIndex] = true;
 		} else {
 			cellInfo.completed[eventIndex] = false;
 		}
+		tableModel.fireTableDataChanged();	// To update the table
 	}
 
 }
