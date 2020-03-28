@@ -42,14 +42,14 @@ public class Window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLayout(new BorderLayout());
-
+		frame.setVisible(true);
 		
 	}
 	
 	
 	// This method will be invoked every time the application must change the view mode
 	public void updateViewMode() {
-
+		frame.getContentPane().removeAll();
 		
 		switch(CurrView) {
 			case MONTHLY_VIEW:
@@ -71,9 +71,9 @@ public class Window {
 			default:
 				System.out.println("[UPDATE ERROR] View mode needs to be updated");
 		}
-
-		frame.add(monthlyView.getPanel(), BorderLayout.CENTER);
+		
 		frame.setVisible(true);
+		
 	}
 }
 

@@ -3,12 +3,13 @@ package com.CalTool.GUI;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.AbstractAction;
 import javax.swing.AbstractCellEditor;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -23,10 +24,10 @@ public class Monthly extends JPanel{
 	
 	//headers for the table
     private JTable jtable;
-    
+    private JButton prev, next;
+    private CellTableModel tableModel;
     
     // Object used to Fill table
-    private Object[][] cellData;
     private String[] days;
     ArrayList<CellInformation> data;
 	
@@ -39,15 +40,32 @@ public class Monthly extends JPanel{
  		
  		populateData();
  		
- 		Cell cell = new Cell();
+ 		tableModel = new CellTableModel(data, days);
  		
- 		jtable = new JTable(new CellTableModel(data, days));
- 		jtable.setDefaultRenderer(CellInformation.class, cell);
- 		jtable.setDefaultEditor(CellInformation.class, cell);
+ 		jtable = new JTable(tableModel);
+ 		jtable.setDefaultRenderer(CellInformation.class, new Cell());
+ 		jtable.setDefaultEditor(CellInformation.class, new Cell());
  		jtable.setRowHeight(100);
  		
  		
+ 		// create and add buttons
+ 		JPanel buttons = new JPanel();
+ 		prev = new JButton("Previous");
+ 		next = new JButton("Next");
+ 		buttons.add(prev);
+ 		buttons.add(next);
+ 		
+ 		next.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				data.add(new CellInformation(1000, new String[] {"SPECIAL EVENT"}));
+				tableModel.fireTableDataChanged();	// To update the table
+			}
+		});
+ 		
  		// Add it to the current panel
+ 		add(buttons);
  		add(new JScrollPane(jtable));
 	}
 	
@@ -56,20 +74,11 @@ public class Monthly extends JPanel{
 		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
 		data = new ArrayList<CellInformation>();
 		
-		data.add(new CellInformation(1, new String[] {"Event 1", "Event 2"}));
-		data.add(new CellInformation(2, new String[] {"Event 3", "Event 4"}));
-		data.add(new CellInformation(3, new String[] {"Event 5", "Event 6"}));
-		data.add(new CellInformation(4, new String[] {"Event 7", "Event 8"}));
-        data.add(null);
-        data.add(null);
-        data.add(null);
+		for (int i = 1; i <= 31; i ++) {
+			data.add(new CellInformation(i, new String[] {"Event 1", "Event 2"}));
+		}
 
-		cellData = new Object[][] {
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
-			new CellInformation[] {data.get(0), data.get(1), data.get(2), data.get(3), null, null, null},
-			new CellInformation[] {data.get(0), null, data.get(1), null, data.get(2), data.get(3), null},
-			new CellInformation[] {null, data.get(0), data.get(1), null, data.get(2), data.get(3), null},
-		};
+		
 	}
 	
 	public Container getPanel() {
@@ -82,11 +91,12 @@ public class Monthly extends JPanel{
 class CellInformation {
 	int day;
 	String[] events;	// This can be changed to an object later on
-	boolean completed;
+	boolean[] completed;
 	
 	public CellInformation(int day, String[] events) {
 		this.day = day;
 		this.events = events;
+		completed = new boolean[events.length];
 	}
 }
 
@@ -103,7 +113,7 @@ class CellTableModel extends AbstractTableModel {
 	
 	@Override
 	public int getRowCount() {
-		return (cellInfo == null) ? 0 : cellInfo.size(); 
+		return (cellInfo == null) ? 0 : cellInfo.size()/7 + 1; 
 	}
 
 	@Override
@@ -113,7 +123,15 @@ class CellTableModel extends AbstractTableModel {
 	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {	// TODO: Change so it gets the correct one
-		return (cellInfo == null) ? null : cellInfo.get(columnIndex);
+		
+		if (cellInfo == null) {
+			return null;
+		}
+		
+		if (rowIndex*7 + columnIndex >= cellInfo.size()) {
+			return null;
+		} else 
+			return cellInfo.get(rowIndex*7 + columnIndex);
 	}
 	
 	public Class getColumnClass(int columnIndex) { 
@@ -131,17 +149,20 @@ class CellTableModel extends AbstractTableModel {
 
 class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRenderer {
 	JPanel panel;
+	JLabel dayNum;
 	JLabel[] label;
 	JCheckBox[] completed;
 	CellInformation cellInfo;
 	
 	public Cell() {
 		panel = new JPanel();
-//	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-	    
-	    
+		dayNum = new JLabel();
+		
 	    label = new JLabel[20];
 	    completed = new JCheckBox[20];
+	    
+	    panel.add(dayNum);
+	    
 	    for (int i = 0; i < label.length; i ++) {
 	    	label[i] = new JLabel();
 	    	completed[i] = new JCheckBox();
@@ -149,6 +170,7 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 	    	panel.add(label[i]);
 	    	panel.add(completed[i]);
 	    }
+	    
 	    
 	}
 	
@@ -160,10 +182,13 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 		// If the cell is defined
 		if (cellInfo != null) {
 			
+			dayNum.setText("" + cellInfo.day);
+			dayNum.setVisible(true);
 			
 			for (int i = 0; i < cellInfo.events.length; i ++) {
 				label[i].setText(cellInfo.events[i]);
-				completed[i].setSelected(cellInfo.completed);
+				completed[i].setSelected(cellInfo.completed[i]);
+				completed[i].addActionListener(new CheckBoxActionListener(cellInfo, i));
 				
 				//SET TO VISIBLE
 				label[i].setVisible(true);
@@ -171,6 +196,7 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 			}
 			for (int i = cellInfo.events.length; i < 20; i ++) {
 				//SET TO inVISIBLE
+				label[i].setText(" ");
 				label[i].setVisible(false);
 				completed[i].setVisible(false);
 			}
@@ -180,8 +206,11 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 		}
 		// If the cell is not defined (null)
 		else {
+			dayNum.setText(" ");
+			dayNum.setVisible(false);
 			for (int i = 0; i < 20; i ++) {
-		
+				label[i].setText(" ");
+				
 				//SET TO inVISIBLE
 				label[i].setVisible(false);
 				completed[i].setVisible(false);
@@ -197,7 +226,6 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 	
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
 		CellInformation cellInfo = (CellInformation)value;
-		System.out.println("1");
 		updateData(cellInfo, isSelected, table);
 		return panel;
 	}
@@ -208,16 +236,31 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 	
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 		CellInformation cellInfo = (CellInformation)value;
-		System.out.println("1");
 		updateData(cellInfo, isSelected, table);
 		return panel;
 	}
 }
 
+class CheckBoxActionListener implements ActionListener {
 
+	CellInformation cellInfo;
+	int eventIndex;
+	
+	public CheckBoxActionListener(CellInformation cellInfo, int eventIndex) {
+		this.cellInfo = cellInfo;
+		this.eventIndex = eventIndex;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (((JCheckBox)e.getSource()).isSelected()) {
+			cellInfo.completed[eventIndex] = true;
+		} else {
+			cellInfo.completed[eventIndex] = false;
+		}
+	}
 
-
-
+}
 
 
 
