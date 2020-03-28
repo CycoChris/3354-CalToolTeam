@@ -37,7 +37,7 @@ public class Window {
 		
 		// Creating the initial window
 		frame.setTitle("CalTool");
-		frame.setSize(900, 800);
+		frame.setSize(1200, 800);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
