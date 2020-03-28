@@ -8,10 +8,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.swing.AbstractCellEditor;
@@ -31,7 +30,9 @@ import javax.swing.table.TableCellRenderer;
 public class Monthly extends JPanel{
 	
 	// Object used to get info about current month 
-	private Calendar calendar;
+//	private Calendar calendar;
+//	Date date;
+	YearMonth currYearMonth;
 	
 	//headers for the table
     private JTable jtable;    
@@ -47,40 +48,80 @@ public class Monthly extends JPanel{
     ArrayList<CellInformation> data;
 	
 	public Monthly() {
-		// Instantiate the super class (for the JPanel)
+		// Instantiate the super class (for the JPanel) and all other needed objects
  		super();
+ 		currMonthFormatter = new SimpleDateFormat("MM/yyyy");
+		currYearMonth = YearMonth.now().plusMonths(1);
+		// TODO: move to constructor
+		days = new String[] {"Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"};
+		data = new ArrayList<CellInformation>();
 
-//		BoxLayout boxlayout = new BoxLayout(this, BoxLayout.Y_AXIS);
-//		setLayout(boxlayout);
- 		BorderLayout layout = new BorderLayout();
+		// Set the correct layout (BoxLayout will waste more space with the buttons)
+		BorderLayout layout = new BorderLayout();
  		setLayout(layout);
  		
+ 		// Add the initial data at first
  		populateData();
  		
+ 		// Define all attributes of the table
  		tableModel = new CellTableModel(data, days);
- 		
  		jtable = new JTable(tableModel);
  		jtable.setDefaultRenderer(CellInformation.class, new Cell(tableModel));
  		jtable.setDefaultEditor(CellInformation.class, new Cell(tableModel));
- 		jtable.setRowHeight(200);
+ 		jtable.setRowHeight(180);
  		
  		
- 		
- 		// Add it to the current panel
+ 		// Add the menu panel and the table to the main JPanel
  		add(getMenuPanel(), BorderLayout.NORTH);
  		add(new JScrollPane(jtable));
 	}
 	
 	// This can be the function that calls a JSON parser to get all of the information
 	public void populateData() {
-		days = new String[] {"Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"};
-		data = new ArrayList<CellInformation>();
 		
-		for (int i = 1; i <= 31; i ++) {
+		// Clear all residual data
+		data.clear();		
+		System.out.println("data size() = " + data.size());
+		
+		// Calculate the number of days in the current and previous months
+ 		int daysInCurrMonth = currYearMonth.lengthOfMonth();
+ 		int daysInPrevMonth = currYearMonth.plusMonths(-1).lengthOfMonth();
+ 		
+ 		currYearMonth.plusMonths(1);	// Get it back to the current month
+ 		
+ 		// Calculate which day is the first day of the current month, and how many days are in the current month
+ 		// Do mod 6 to find which weekday it is (0 = Sun ...)
+ 		int weekDayCurrMonth = (currYearMonth.getMonth().firstDayOfYear(currYearMonth.isLeapYear()) - 1) % 6;
+ 		
+
+ 		//TESTTSTTDTASTDSTADTAS GET THE WEEKDAY NAME OF THE FIRST MONTH DAY
+ 		Calendar c = Calendar.getInstance();
+ 		c.set(currYearMonth.getYear(), currYearMonth.getMonthValue(), 1);
+		System.out.println("weekday curr month = " + c.getFirstDayOfWeek());
+ 		
+ 		// Add in all of the days still visible from the previous month
+		for (int i = 0; i < weekDayCurrMonth; i ++) {
+			data.add(new CellInformation(daysInPrevMonth, new String[] {"NOT IN CURR", "MONTH"}));
+		}
+
+		System.out.println("data size() = " + data.size());
+		
+		// Add all of the days visible for the current month
+		for (int i = 1; i <= daysInCurrMonth; i ++) {
 			data.add(new CellInformation(i, new String[] {"Event 1", "Event 2", "3", "4", "5"}));
 		}
 
+
+		System.out.println("data size() = " + data.size());
 		
+		// Add all of the days visible from the next month
+		int i = 1;
+		while (data.size()%7 != 0) {
+			data.add(new CellInformation(i, new String[] {"NEXT", "MONTH"}));
+			i ++;
+		}
+
+		System.out.println("data size() = " + data.size());
 	}
 	
 	public JPanel getMenuPanel() {
@@ -89,32 +130,38 @@ public class Monthly extends JPanel{
  		prev = new JButton();
  		next = new JButton();
  		currMonth = new JLabel();
- 		currMonthFormatter = new SimpleDateFormat("MM/yyyy");
- 		calendar = new GregorianCalendar();
- 		 		
+ 		
  		// Set all attributes of the subcomponents in the menu panel
  		prev.setText("<<");
+ 		prev.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// Change the month value 
+				currYearMonth = currYearMonth.plusMonths(-1);
+				currMonth.setText(currYearMonth.getMonthValue() + "/" + currYearMonth.getYear());
+				
+				// Update the data and the table
+				populateData();
+				tableModel.fireTableDataChanged();	// To update the table				
+			}
+		});
  		next.setText(">>");
  		next.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				data.add(new CellInformation(1000, new String[] {"SPECIAL EVENT"}));
-				tableModel.fireTableDataChanged();	// To update the table
+				// Change the month value 
+				currYearMonth = currYearMonth.plusMonths(1);
+				currMonth.setText(currYearMonth.getMonthValue() + "/" + currYearMonth.getYear());
 				
-				// Change the date appropriately 
-				int yr = calendar.get(Calendar.YEAR);
-				calendar.set(yr-1900, calendar.get(Calendar.MONTH) + 1,10);
-//				currMonth.setText(currMonthFormatter.format(calendar.getTime()));
-				currMonth.setText(calendar.get(Calendar.YEAR) + "/" + calendar.get(Calendar.MONTH));
-				System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
-				System.out.println(calendar.get(Calendar.YEAR));
+				// Update the data and the table
+				populateData();
+				tableModel.fireTableDataChanged();	// To update the table
 			}
 		});
  		
-		currMonth.setText(currMonthFormatter.format(calendar.getTime()));
-		System.out.println(calendar.get(Calendar.YEAR));
- 		calendar.setTime(new Date(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)));
+		currMonth.setText(currYearMonth.getMonthValue() + "/" + currYearMonth.getYear());
  		
  		// Add all required elements and return
  		menuPanel.add(prev);
@@ -157,7 +204,7 @@ class CellTableModel extends AbstractTableModel {
 	
 	@Override
 	public int getRowCount() {
-		return (cellInfo == null) ? 0 : cellInfo.size()/7 + 1; 
+		return (cellInfo == null) ? 0 : cellInfo.size()/7; 
 	}
 
 	@Override
@@ -196,6 +243,7 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 	JPanel panel;
 	JLabel dayNum;
 	JPanel[] aligner;
+	JPanel dayNumAligner;
 	JLabel[] label;
 	JCheckBox[] completed;
 	CellInformation cellInfo;
@@ -214,16 +262,16 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 	    // Change the Layout Manager of the JPanel
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 	    
-	    // Style the day number of each cell
-	    JPanel temp = new JPanel();
-	    temp.setLayout(new FlowLayout(FlowLayout.LEFT));
-	    temp.add(dayNum);	
+	    // Style the day number of each cell and make it left aligned
+	    dayNumAligner = new JPanel();
+	    dayNumAligner.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    dayNumAligner.add(dayNum);	
 	    dayNum.setBorder(BorderFactory.createLineBorder(Color.blue));
 	    dayNum.setOpaque(true);
 	    dayNum.setBackground(Color.lightGray);
 	    
-	 // Start adding in all of the elements
-	    panel.add(temp);
+	    // Start adding in all of the elements
+	    panel.add(dayNumAligner);
 	    for (int i = 0; i < label.length; i ++) {
 	    	// Create all objects
 	    	label[i] = new JLabel();
@@ -291,10 +339,24 @@ class Cell extends AbstractCellEditor implements TableCellEditor, TableCellRende
 			}
 		}
 		
-		if (isSelected)
+		// Make it so that when an element is selected, the cells are highlighted
+		if (isSelected) {
 			panel.setBackground(table.getSelectionBackground());
-		else 
+			dayNumAligner.setBackground(table.getSelectionBackground());
+			for (int i = 0; i < 20; i ++) {
+				aligner[i].setBackground(table.getSelectionBackground());
+				completed[i].setBackground(table.getSelectionBackground());
+			}
+			
+		}
+		else {
 			panel.setBackground(table.getBackground());
+			dayNumAligner.setBackground(table.getBackground());
+			for (int i = 0; i < 20; i ++) {
+				aligner[i].setBackground(table.getBackground());
+				completed[i].setBackground(table.getBackground());
+			}
+		}
 		
 	}
 	
