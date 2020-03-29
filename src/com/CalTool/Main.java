@@ -1,6 +1,6 @@
 package com.CalTool;
 
-import com.CalTool.GUI.*;
+import com.CalTool.GUI.Window;
 
 public class Main {
 

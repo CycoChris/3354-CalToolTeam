@@ -51,7 +51,7 @@ public class Monthly extends JPanel{
 		// Instantiate the super class (for the JPanel) and all other needed objects
  		super();
  		currMonthFormatter = new SimpleDateFormat("MM/yyyy");
-		currYearMonth = YearMonth.now().plusMonths(1);
+		currYearMonth = YearMonth.now();
 		// TODO: move to constructor
 		days = new String[] {"Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"};
 		data = new ArrayList<CellInformation>();
@@ -90,18 +90,21 @@ public class Monthly extends JPanel{
  		currYearMonth.plusMonths(1);	// Get it back to the current month
  		
  		// Calculate which day is the first day of the current month, and how many days are in the current month
- 		// Do mod 6 to find which weekday it is (0 = Sun ...)
- 		int weekDayCurrMonth = (currYearMonth.getMonth().firstDayOfYear(currYearMonth.isLeapYear()) - 1) % 6;
+ 		// Do modulo 7 to find which weekday it is (Sun = 0, Mon = 1, Tues = 2, Wed = 3, Thurs = 4, Fri = 5, Sat = 6)
+ 		int weekDayCurrMonth = currYearMonth.atDay(1).getDayOfWeek().getValue() % 7;
  		
 
- 		//TESTTSTTDTASTDSTADTAS GET THE WEEKDAY NAME OF THE FIRST MONTH DAY
- 		Calendar c = Calendar.getInstance();
- 		c.set(currYearMonth.getYear(), currYearMonth.getMonthValue(), 1);
-		System.out.println("weekday curr month = " + c.getFirstDayOfWeek());
- 		
+
+ 		System.out.println("Month = " + currYearMonth.getMonthValue());
+ 		System.out.println("Days in a month = " + currYearMonth.lengthOfMonth());
+		System.out.println("weekday curr month = " + currYearMonth.atDay(1).getDayOfWeek()); 
+		System.out.println(currYearMonth.atDay(1).getDayOfWeek().getValue()%7);
+		// Sun = 0, Mon = 1, Tues = 2, Wed = 3, Thurs = 4, Fri = 5, Sat = 6
+		
+		
  		// Add in all of the days still visible from the previous month
 		for (int i = 0; i < weekDayCurrMonth; i ++) {
-			data.add(new CellInformation(daysInPrevMonth, new String[] {"NOT IN CURR", "MONTH"}));
+			data.add(0, new CellInformation(daysInPrevMonth - i, new String[] {"NOT IN CURR", "MONTH"}));
 		}
 
 		System.out.println("data size() = " + data.size());
