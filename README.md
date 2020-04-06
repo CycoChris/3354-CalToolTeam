@@ -40,7 +40,4 @@ https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhO
 # Recorded Final Project Presentation Script:
 https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
 
-##### "CalTool" codes
-#####1. [CalTool v0.0] (Kent Templin) --> https://github.com/kenttemplin/3354-CalToolTeam/blob/master/Caltool%20v0.0
-#####____________________________________(This code is from a youtube video. Feel free to edit or recreate your own.)
-#####2. [CalTool v1.0] ( )
+
