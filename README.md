@@ -40,5 +40,5 @@ https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhO
 # Recorded Final Project Presentation Script:
 https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
 
-# Gross Function Point (GFP) Sheet:
+# Function Point Calculation Sheet:
 https://docs.google.com/spreadsheets/d/1IQonpUK-d2YsMzgHLMb-90qBykLCm18Q2jCkZjtvJOg/edit#gid=0
