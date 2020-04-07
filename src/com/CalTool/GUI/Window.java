@@ -11,6 +11,7 @@ public class Window {
 	
 	// Create all objects
 	Monthly monthlyView;
+	Weekly weeklyView;
 	
 	
 	// Declare enum used to track the view (
@@ -36,43 +37,41 @@ public class Window {
 		
 		// Creating the initial window
 		frame.setTitle("CalTool");
-		frame.setSize(800, 700);
+		frame.setSize(1200, 800);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		frame.setLayout(new BorderLayout());
-
+		frame.setVisible(true);
 		
 	}
 	
 	
 	// This method will be invoked every time the application must change the view mode
 	public void updateViewMode() {
-//		frame.removeAll();
+		frame.getContentPane().removeAll();
 		
-//		switch(CurrView) {
-//			case MONTHLY_VIEW:
-//				System.out.println("Adding panel");
-//				frame.add(monthlyView.getPanel());
-//				break;
-//				
-//			case DAILY_VIEW:
-////				frame.add(pDaily);
-//				break;
-//				
-//			case WEEKLY_VIEW:
-////				frame.add(pWeekly);
-//				break;
-//				
-//			case AGENDA_VIEW:
-////				frame.add(pAgenda);
-//				break;
-//				
-//			default:
-//				System.out.println("[UPDATE ERROR] View mode needs to be updated");
-//		}
-
-		frame.add(monthlyView.getPanel(), BorderLayout.CENTER);
+		switch(CurrView) {
+			case MONTHLY_VIEW:
+				frame.add(monthlyView.getPanel());
+				break;
+				
+			case DAILY_VIEW:
+//				frame.add(pDaily);
+				break;
+				
+			case WEEKLY_VIEW:
+				frame.add(weeklyView.getPanel());
+				break;
+				
+			case AGENDA_VIEW:
+//				frame.add(pAgenda);
+				break;
+				
+			default:
+				System.out.println("[UPDATE ERROR] View mode needs to be updated");
+		}
+		
 		frame.setVisible(true);
 		
 	}
