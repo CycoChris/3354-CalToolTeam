@@ -38,7 +38,7 @@ https://docs.google.com/document/d/1c0NMFvvbk9E8Qe4TMT1PCn4HPPApqkG8r-0jRuxPUpA/
 https://docs.google.com/presentation/d/1R96kntibZs4wKHVH92UtBwkTtbFfliZ_pWxXhUhOSQE/edit?usp=sharing
 
 # Recorded Final Project Presentation Script:
-https://docs.google.com/document/d/1KCHTD9S8wGSa1UKFNR6EGIuwqFWz_N0aesY2FaU2_e8/edit?usp=sharing
+https://docs.google.com/document/d/1PhhenfphsAV9rOOEo34iqmkQ3JiOhg4a0ffh5ikCvjg/edit?usp=sharing
 
 # Function Point Calculation Sheet:
 https://docs.google.com/spreadsheets/d/1IQonpUK-d2YsMzgHLMb-90qBykLCm18Q2jCkZjtvJOg/edit#gid=0
