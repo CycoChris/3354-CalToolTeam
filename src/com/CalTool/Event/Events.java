@@ -87,6 +87,9 @@ public class Events {
 		event.category = EventCategory.NONE;
 	}
 	
+	public void clearEvents() {
+		eventList.clear();
+	}
 	
 }
 

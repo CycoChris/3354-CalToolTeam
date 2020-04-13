@@ -59,6 +59,25 @@ public class TestCases {
 		
 	}
 	
+	// This case will test to see if the eventList can be cleared correctly using the Events.clearEvents() function
+	@Test
+	public void case5() throws ClassExceptionError {
+		Events events = new Events();
+		
+		// Add all events 
+		events.addEvent(new Event("Event #1", 1, Color.RED));
+		events.addEvent(new Event("Event #2", 2, Color.GREEN));
+		events.addEvent(new Event("Event #3", 3, Color.RED));
+		events.addEvent(new Event("Event #4", 4, Color.GREEN));
+		
+		assertEquals("If all events were added correctly", 4, events.getEventsToEdit().size());
+		
+		events.clearEvents();
+		
+		assertEquals("If all events were cleared correctly", 0, events.getEventsToEdit().size());
+		
+	}
+	
 	
 	
 }
