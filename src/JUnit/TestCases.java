@@ -14,14 +14,10 @@ import com.CalTool.Event.Events;
 public class TestCases {
 
 	@Test
-	public void case1() {
+	public void case1() throws ClassExceptionError {
 		Events events = new Events();
-		
-		try {
-			events.addEvent(new Event("Event Name", 10, Color.BLACK));
-		} catch (ClassExceptionError e) {
-			
-		}
+	
+		events.addEvent(new Event("Event Name", 10, Color.BLACK));	
 		
 		assertEquals("Checking if event added successfully", 1, events.getEventsToEdit().size());
 		
@@ -37,14 +33,10 @@ public class TestCases {
 	}
 	
 	@Test
-	public void case3() {
+	public void case3() throws ClassExceptionError {
 		Events events = new Events();
-		
-		try {
-			events.addEvent(new Event("Expected Event Name", 100, Color.CYAN));
-		} catch (ClassExceptionError e) {
-			
-		}
+	
+		events.addEvent(new Event("Expected Event Name", 100, Color.CYAN));
 		
 		assertEquals("Checking if eventName added correctly.", "Expected Event Name", events.getEventsToEdit().get(0).name);
 		assertEquals("Checking if eventDate added correctly.", 100, events.getEventsToEdit().get(0).eventDate);
@@ -53,15 +45,11 @@ public class TestCases {
 	}
 	
 	@Test
-	public void case4() {
+	public void case4() throws ClassExceptionError {
 		Events events = new Events();
-		
-		try {
-			events.addEvent(new Event("Conflict #1", 100, Color.RED));
-			events.addEvent(new Event("Conflict #2", 100, Color.GREEN));
-		} catch (ClassExceptionError e) {
-			
-		}
+				
+		events.addEvent(new Event("Conflict #1", 100, Color.RED));
+		events.addEvent(new Event("Conflict #2", 100, Color.GREEN));
 		
 		assertEquals("Checking for correct time conflict return value (true).", true, events.checkTimeConflicts());
 		
