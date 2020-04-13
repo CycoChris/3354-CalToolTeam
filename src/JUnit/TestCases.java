@@ -13,6 +13,7 @@ import com.CalTool.Event.Events;
 
 public class TestCases {
 
+	// This case will test to see if events can be added successfully under correct conditions
 	@Test
 	public void case1() throws ClassExceptionError {
 		Events events = new Events();
@@ -23,6 +24,7 @@ public class TestCases {
 		
 	}
 		
+	// This case will test to see if only valid Event instances are added to the list of stored events
 	@Test (expected = ClassExceptionError.class)
 	public void case2 () throws ClassExceptionError {
 		Events events = new Events();
@@ -32,6 +34,7 @@ public class TestCases {
 		assertEquals("Checking if event added successfully", 0, events.getEventsToEdit().size());
 	}
 	
+	// This function will test if values remain the same when they are added to the list of stored events
 	@Test
 	public void case3() throws ClassExceptionError {
 		Events events = new Events();
@@ -44,6 +47,7 @@ public class TestCases {
 		
 	}
 	
+	// This case will test for time conflict
 	@Test
 	public void case4() throws ClassExceptionError {
 		Events events = new Events();
