@@ -12,6 +12,6 @@ public class JUnitTester {
 	         System.out.println(failure.toString());
 	      }
 	      System.out.println("Result = " + result.wasSuccessful());
-	   }
+	}
 	
 }
