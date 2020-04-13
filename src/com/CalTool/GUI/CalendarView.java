@@ -90,7 +90,7 @@ public class CalendarView {
 	}
 	
 	// Returns the data structure for the events
-	public Event getEvents() {
+	public List getEvents() {
 		return events.eventsList;
 	}
 	

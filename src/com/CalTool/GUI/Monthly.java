@@ -41,7 +41,6 @@ public class Monthly extends JPanel{
     // Objects for the panel above the monthly calendar 
     private JButton prev, next;
     private JLabel currMonth;	// The label used to distinguish which month is being displayed
-    private SimpleDateFormat currMonthFormatter;
     
     // Object used to Fill table
     private String[] days;
@@ -50,7 +49,6 @@ public class Monthly extends JPanel{
 	public Monthly() {
 		// Instantiate the super class (for the JPanel) and all other needed objects
  		super();
- 		currMonthFormatter = new SimpleDateFormat("MM/yyyy");
 		currYearMonth = YearMonth.now();
 		// TODO: move to constructor
 		days = new String[] {"Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"};
