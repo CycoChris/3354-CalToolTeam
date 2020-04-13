@@ -66,12 +66,11 @@ public class TestCases {
 		Events events = new Events();
 		
 		// Add all events 
-		events.addEvent(new Event("Event #1", 1, Color.RED));
-		events.addEvent(new Event("Event #2", 2, Color.GREEN));
-		events.addEvent(new Event("Event #3", 3, Color.RED));
-		events.addEvent(new Event("Event #4", 4, Color.GREEN));
+		for (int i = 1; i <= 100; i ++) {
+			events.addEvent(new Event("Event #" + i, i%30, Color.RED));
+		}
 		
-		assertEquals("If all events were added correctly", 4, events.getEventsToEdit().size());
+		assertEquals("If all events were added correctly", 100, events.getEventsToEdit().size());
 		
 		// Clear the stored events
 		events.clearEvents();
