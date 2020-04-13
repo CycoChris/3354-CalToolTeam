@@ -52,6 +52,21 @@ public class TestCases {
 		
 	}
 	
+	@Test
+	public void case4() {
+		Events events = new Events();
+		
+		try {
+			events.addEvent(new Event("Conflict #1", 100, Color.RED));
+			events.addEvent(new Event("Conflict #2", 100, Color.GREEN));
+		} catch (ClassExceptionError e) {
+			
+		}
+		
+		assertEquals("Checking for correct time conflict return value (true).", true, events.checkTimeConflicts());
+		
+	}
+	
 	
 	
 }
