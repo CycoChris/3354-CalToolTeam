@@ -10,8 +10,7 @@ public class Weekly extends JPanel {
 		// Instantiate the super class (for the JPanel)
  		super();
 
- 		
- 		
+ 		/* TODO: To implement if time allows*/
 		
 	}
 	
