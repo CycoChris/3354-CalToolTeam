@@ -21,9 +21,9 @@ public class TestCases {
 		events.addEvent(new Event("Event Name", 10, Color.BLACK));	
 		
 		assertEquals("Checking if event added successfully", 1, events.getEventsToEdit().size());
-		
 	}
 		
+	
 	// This case will test to see if only valid Event instances are added to the list of stored events
 	@Test (expected = ClassExceptionError.class)
 	public void case2 () throws ClassExceptionError {
@@ -33,6 +33,7 @@ public class TestCases {
 		
 		assertEquals("Checking if event added successfully", 0, events.getEventsToEdit().size());
 	}
+	
 	
 	// This function will test if values remain the same when they are added to the list of stored events
 	@Test
@@ -44,8 +45,8 @@ public class TestCases {
 		assertEquals("Checking if eventName added correctly.", "Expected Event Name", events.getEventsToEdit().get(0).name);
 		assertEquals("Checking if eventDate added correctly.", 100, events.getEventsToEdit().get(0).eventDate);
 		assertEquals("Checking if eventColor added correctly.", Color.CYAN, events.getEventsToEdit().get(0).color);
-		
 	}
+	
 	
 	// This case will test for time conflict
 	@Test
@@ -55,9 +56,9 @@ public class TestCases {
 		events.addEvent(new Event("Conflict #1", 100, Color.RED));
 		events.addEvent(new Event("Conflict #2", 100, Color.GREEN));
 		
-		assertEquals("Checking for correct time conflict return value (true).", true, events.checkTimeConflicts());
-		
+		assertEquals("Checking for correct time conflict return value (true).", true, events.checkTimeConflicts());	
 	}
+	
 	
 	// This case will test to see if the eventList can be cleared correctly using the Events.clearEvents() function
 	@Test
@@ -72,12 +73,11 @@ public class TestCases {
 		
 		assertEquals("If all events were added correctly", 4, events.getEventsToEdit().size());
 		
+		// Clear the stored events
 		events.clearEvents();
 		
 		assertEquals("If all events were cleared correctly", 0, events.getEventsToEdit().size());
-		
 	}
-	
 	
 	
 }
