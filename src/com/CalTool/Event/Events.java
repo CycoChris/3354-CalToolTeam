@@ -14,9 +14,8 @@ public class Events {
 	}
 	
 	private ArrayList<Event> eventList;
-	private ArrayList<Event> eventCategories;
 	
-	class Event {
+	public class Event {
 		
 		public String name;
 		
@@ -37,18 +36,22 @@ public class Events {
 		
 	}
 	
-	Events(long startTime, long duration, String name, String description) {
+	public Events() {
 		eventList = new ArrayList<Event>();
 	}
 	
-	void addEvents(Event[] event) {
+	public void addEvents(Event[] event) {
 		for(Event e : event) {
 			eventList.add(e);
 			System.out.println("added an event!!1!1 :)");
 		}
 	}
 	
-	void deleteEvent(String name) {
+	ArrayList<Event> getEventsToEdit() {
+		return eventList;
+	}
+	
+	public void deleteEvent(String name) {
 		for(int x=0; x<eventList.size(); x++) {
 			if(eventList.get(x).name.equals(name)) {
 				eventList.remove(x);
@@ -57,11 +60,11 @@ public class Events {
 		}
 	}
 	
-	void addWeeklyEvent(String name, int eventDate, EventType type, Color color) {
+	public void addWeeklyEvent(String name, int eventDate, EventType type, Color color) {
 		eventList.add(new Event(name, eventDate, type, color));
 	}
 	
-	boolean checkTimeConflicts() {
+	public boolean checkTimeConflicts() {
 		
 		for(Event e : eventList) {
 			for(Event ee : eventList) {
@@ -73,11 +76,11 @@ public class Events {
 		return false;
 	}
 	
-	void colorMarkings() {
+	public void colorMarkings() {
 		System.out.println("I colored it! :)");
 	}
 	
-	boolean checkEventAlert() {
+	public boolean checkEventAlert() {
 		
 		int currentTime = 0x6969;
 		
@@ -90,8 +93,17 @@ public class Events {
 		return false;
 	}
 	
-	void addEventCategory(Event event, EventCategory category) {
+	public void addEventCategory(Event event, EventCategory category) {
 		event.category = category;
 	}
+	
+	public void editEventCategory(Event event, EventCategory change) {
+		event.category = change;
+	}
+	
+	public void removeEventCategory(Event event) {
+		event.category = EventCategory.NONE;
+	}
+	
 	
 }
