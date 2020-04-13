@@ -36,7 +36,21 @@ public class TestCases {
 		assertEquals("Checking if event added successfully", 0, events.getEventsToEdit().size());
 	}
 	
-	
+	@Test
+	public void case3() {
+		Events events = new Events();
+		
+		try {
+			events.addEvent(new Event("Expected Event Name", 100, Color.CYAN));
+		} catch (ClassExceptionError e) {
+			
+		}
+		
+		assertEquals("Checking if eventName added correctly.", "Expected Event Name", events.getEventsToEdit().get(0).name);
+		assertEquals("Checking if eventDate added correctly.", 100, events.getEventsToEdit().get(0).eventDate);
+		assertEquals("Checking if eventColor added correctly.", Color.CYAN, events.getEventsToEdit().get(0).color);
+		
+	}
 	
 	
 	

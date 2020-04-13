@@ -3,9 +3,6 @@ package com.CalTool.Event;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import com.CalTool.Event.Events.EventCategory;
-import com.CalTool.Event.Events.EventType;
-
 public class Events {
 	
 	public enum EventType {
