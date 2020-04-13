@@ -15,7 +15,7 @@ public class TestCases {
 		Events events = new Events();
 		events.addEvent(new Event(null, 0, null, null));
 		
-		assertEquals("Checking if event added successfully", 1, events.getSize());
+		assertEquals("Checking if event added successfully", 1, events.getEventsToEdit().size());
 	}
 		
 	@Test (expected = ClassExceptionError.class)

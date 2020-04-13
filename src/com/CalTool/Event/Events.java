@@ -44,7 +44,7 @@ public class Events {
 			eventList.add(event);
 	}
 	
-	ArrayList<Event> getEventsToEdit() {
+	public ArrayList<Event> getEventsToEdit() {
 		return eventList;
 	}
 	
