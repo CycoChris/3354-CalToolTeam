@@ -3,45 +3,33 @@ package com.CalTool.Event;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import com.CalTool.Event.Events.EventCategory;
+import com.CalTool.Event.Events.EventType;
+
 public class Events {
 	
-	enum EventType {
+	public enum EventType {
 		WEEKLY, REGULAR;
 	}
 	
-	enum EventCategory {
+	public enum EventCategory {
 		HOLIDAY, BIRTHDAY, NONE
 	}
 	
 	private ArrayList<Event> eventList;
 	
-	public class Event {
-		
-		public String name;
-		
-		public int eventDate;
-		
-		public EventType type;
-		
-		public Color color;
-		
-		public EventCategory category = EventCategory.NONE;
-		
-		public Event(String name, int eventDate, EventType type, Color color) {
-			this.name = name;
-			this.eventDate = eventDate;
-			this.type = type;
-			this.color = color;
-		}
-		
-	}
 	
 	public Events() {
 		eventList = new ArrayList<Event>();
 	}
 	
-	public void addEvent(Event event) {
+	public void addEvent(Object o) throws ClassExceptionError {
+		try {
+			Event event = (Event)o;
 			eventList.add(event);
+		} catch (Exception e) {
+			throw new ClassExceptionError();
+		}
 	}
 	
 	public ArrayList<Event> getEventsToEdit() {
@@ -104,3 +92,4 @@ public class Events {
 	
 	
 }
+

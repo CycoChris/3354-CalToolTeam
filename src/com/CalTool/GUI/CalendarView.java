@@ -2,9 +2,14 @@ package com.CalTool.GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.List;
 import java.time.YearMonth;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+
+import com.CalTool.Event.Event;
+import com.CalTool.Event.Events;
 
 public class CalendarView {
 
@@ -14,6 +19,7 @@ public class CalendarView {
 	// Create all objects
 	Monthly monthlyView;
 	Weekly weeklyView;
+	Events events;
 
 	// Declare enum used to track the view (
 	View CurrentView;
@@ -24,6 +30,7 @@ public class CalendarView {
 			
 		// Create the different panels 
 		monthlyView = new Monthly();
+		events = new Events();
 		
 		// instantiate the current view TODO: this value can be read in the JSON data file
 		CurrentView = View.MONTHLY_VIEW;
@@ -90,12 +97,12 @@ public class CalendarView {
 	}
 	
 	// Returns the data structure for the events
-	public List getEvents() {
-		return events.eventsList;
+	public ArrayList<Event> getEvents() {
+		return events.getEventsToEdit();
 	}
 	
 	public int getDate(Event e) {
-		e.getDate();
+		return e.eventDate;
 	}
 	
 	
