@@ -40,11 +40,8 @@ public class Events {
 		eventList = new ArrayList<Event>();
 	}
 	
-	public void addEvents(Event[] event) {
-		for(Event e : event) {
-			eventList.add(e);
-			System.out.println("added an event!!1!1 :)");
-		}
+	public void addEvent(Event event) {
+			eventList.add(event);
 	}
 	
 	ArrayList<Event> getEventsToEdit() {
